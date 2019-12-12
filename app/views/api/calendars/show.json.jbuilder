@@ -1,4 +1,5 @@
 json.id @calendar.id
+json.start_date @calendar.start_date
 json.water_days do
   json.array! @calendar.water_days.each do |water_day|
     json.id water_day.id
