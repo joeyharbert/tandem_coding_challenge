@@ -10,14 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_172733) do
+ActiveRecord::Schema.define(version: 2019_12_12_192627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "plant_water_days", force: :cascade do |t|
+    t.integer "plant_id"
+    t.integer "water_day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "plants", force: :cascade do |t|
     t.string "name"
     t.integer "water_after"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "water_days", force: :cascade do |t|
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
