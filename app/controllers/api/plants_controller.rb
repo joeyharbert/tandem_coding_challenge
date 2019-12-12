@@ -4,4 +4,10 @@ class Api::PlantsController < ApplicationController
 
     render "index.json.jbuilder"
   end
+
+  def show
+    @plant = Plant.find(params[:id])
+
+    render "show.json.jbuilder"
+  end
 end
