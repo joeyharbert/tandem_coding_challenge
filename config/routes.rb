@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   namespace :api do
     get 'plants' => 'plants#index'
     get 'plants/:id' => 'plants#show'
+    post 'plants' => 'plants#create'
   end
 end
