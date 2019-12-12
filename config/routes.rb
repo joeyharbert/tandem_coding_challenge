@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     #calendars
     get 'calendars' => 'calendars#index'
     get 'calendars/:id' => 'calendars#show'
+    post 'calendars' => 'calendars#create'
   end
 end
