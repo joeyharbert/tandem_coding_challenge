@@ -4,4 +4,10 @@ class Api::CalendarsController < ApplicationController
 
     render "index.json.jbuilder"
   end
+
+  def show
+    @calendar = Calendar.find(params[:id])
+
+    render "show.json.jbuilder"
+  end
 end
