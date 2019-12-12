@@ -8,8 +8,13 @@ Rails.application.routes.draw do
   # end
 
   namespace :api do
+
+    #plants
     get 'plants' => 'plants#index'
     get 'plants/:id' => 'plants#show'
     post 'plants' => 'plants#create'
+
+    #calendars
+    get 'calendars' => 'calendars#index'
   end
 end
