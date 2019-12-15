@@ -30,25 +30,25 @@ class Api::CalendarsController < ApplicationController
 
         if @calendar.save
           #create water_days attached to calendar
-          #make number of weeks for calendar scalable
-          num_of_weeks = 0
-          if params[:num_of_weeks]
-            num_of_weeks = params[:num_of_weeks].to_i
-            if num_of_weeks == 0
-              render json: {error: "Please enter a valid number of weeks for the calendar"}
-              return
+            #make number of weeks for calendar scalable
+            num_of_weeks = 0
+            if params[:num_of_weeks]
+              num_of_weeks = params[:num_of_weeks].to_i
+              if num_of_weeks == 0
+                render json: {error: "Please enter a valid number of weeks for the calendar"}
+                return
+              end
+            else
+              num_of_weeks = 12
             end
-          else
-            num_of_weeks = 12
-          end
 
-          num_of_days = num_of_weeks * 7
-          current_date = start_date
+            num_of_days = num_of_weeks * 7
+            current_date = start_date
 
-          num_of_days.times do 
-            WaterDay.create(date: current_date, calendar_id: @calendar.id)
-            current_date += 1
-          end
+            num_of_days.times do 
+              WaterDay.create(date: current_date, calendar_id: @calendar.id)
+              current_date += 1
+            end
 
           #create all plants (this will be given to us from front end)
             plants_file = File.read(params[:plants].path)
@@ -68,9 +68,46 @@ class Api::CalendarsController < ApplicationController
                 ))
             end
 
-            puts plant_array
           #calculate which plants for which days and attach
+          #for times sake, this is the most straightforward logic I could come up with
+          #TODO: I would like to come back and make this algorithm more efficient time allowing
+            #loop through all of the plants and attach them to their water days
+            water_days = @calendar.water_days
+            plant_array.each do |plant|
+              #we start water_time at 0 so that all plants get assigned to be watered on the start day
+              water_time = 0
+              day_index = 0
 
+              water_days.each do |water_day|
+                #if today is water day
+                if water_time == 0
+                  #if today is not a weekend day
+                  if water_day.date.cwday < 6
+                    PlantWaterDay.create(plant_id: plant.id, water_day_id: water_day.id)
+                    water_time = plant.water_after
+                  else
+                    #it is a weekend day, if saturday: water friday
+                    #if sunday: water monday
+
+                    if water_day.date.cwday == 6
+                      #saturday
+                      PlantWaterDay.create(plant_id: plant.id, water_day_id: water_days[day_index - 1].id)
+                      water_time = plant.water_after - 1
+                    else
+                      #sunday
+                      #check that we're not at the end of the calendar
+                      if water_days[day_index] != water_days.last
+                        PlantWaterDay.create(plant_id: plant.id, water_day_id: water_days[day_index + 1].id)
+                        water_time = plant.water_after + 1
+                      end
+                    end
+                  end
+                end
+
+                water_time -= 1
+                day_index += 1
+              end
+            end
 
           render 'show.json.jbuilder'
         else
