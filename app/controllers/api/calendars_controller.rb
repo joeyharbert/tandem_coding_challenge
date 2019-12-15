@@ -51,8 +51,19 @@ class Api::CalendarsController < ApplicationController
           end
 
           #create all plants (this will be given to us from front end)
-            #for now, we will just use all plants in database
+            plants_file = File.read(params[:plants].path)
+            plant_data = JSON.parse(plants_file)
+            plant_array = []
 
+            plant_data.each do |plant| 
+              plant_array.push(
+                Plant.create(
+                name: plant["name"], 
+                water_after: plant["water_after"]
+                ))
+            end
+
+            puts plant_array
           #calculate which plants for which days and attach
 
 
