@@ -11,7 +11,8 @@ Once you have those, clone the app to your computer!
 
 Navigate to the directory in terminal
 Use
-```rails db:create
+```
+   rails db:create
    rails db:migrate
    rails server
 ```
