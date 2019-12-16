@@ -19,4 +19,6 @@ Rails.application.routes.draw do
     get 'calendars/:id' => 'calendars#show'
     post 'calendars' => 'calendars#create'
   end
+
+  get "/*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] }
 end
