@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the back-end of Watering Can!
 
-Things you may want to cover:
+To get started you will need:
 
-* Ruby version
+* Ruby 2.6.1
+* Rails 5.2.4
 
-* System dependencies
+Once you have those, clone the app to your computer!
 
-* Configuration
+Navigate to the directory in terminal
 
-* Database creation
+Use ```rails server``` to start the back end development server.
 
-* Database initialization
+Now that the back end is up and running, let's head over to the front end at:
 
-* How to run the test suite
+```https://github.com/joeyharbert/tandem_front_end```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+to move on!
