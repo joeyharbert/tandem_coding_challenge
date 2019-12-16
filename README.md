@@ -15,10 +15,18 @@ Navigate to the directory in terminal
 Use
 ```
    bundle install
+   rails db:create
    rails db:migrate
    rails server
 ```
-to set up the database and start the server.
+to set up the database and start the server. If there are any errors with the above commands try:
+```
+   bundle install
+   bundle exec rails db:create
+   bundle exec rails db:migrate
+   rails server
+```
+
 
 Now that the back end is up and running, let's head over to the front end at:
 
