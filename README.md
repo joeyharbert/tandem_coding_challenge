@@ -6,6 +6,7 @@ To get started you will need:
 
 * Ruby 2.6.1
 * Rails 5.2.4
+* Bundler 2.0.0
 
 Once you have those, clone the app to your computer!
 
