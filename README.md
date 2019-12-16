@@ -10,8 +10,12 @@ To get started you will need:
 Once you have those, clone the app to your computer!
 
 Navigate to the directory in terminal
-
-Use ```rails server``` to start the back end development server.
+Use
+```rails db:create
+   rails db:migrate
+   rails server
+```
+to set up the database and start the server.
 
 Now that the back end is up and running, let's head over to the front end at:
 
