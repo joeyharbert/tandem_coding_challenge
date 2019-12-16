@@ -51,13 +51,7 @@ class Api::CalendarsController < ApplicationController
             end
 
           #create all plants (this will be given to us from front end)
-            plants_file = File.read(params[:plants].path)
-            #check and make sure imported file is .JSON
-            if File.extname(params[:plants].path) != ".json"
-              render json: {error: "please upload a .json file of plant data"}
-              return
-            end
-            plant_data = JSON.parse(plants_file)
+            plant_data = params[:plants]
             plant_array = []
 
             plant_data.each do |plant| 
