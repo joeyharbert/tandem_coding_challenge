@@ -2,6 +2,9 @@
 
 Welcome to the back-end of Watering Can!
 
+#Want to skip the boring set up? Check out the app live at
+``` https://whispering-river-29308.herokuapp.com/ ```
+
 To get started you will need:
 
 * Ruby 2.6.1
@@ -28,8 +31,21 @@ to set up the database and start the server. If there are any errors with the ab
 ```
 
 
-Now that the back end is up and running, let's head over to the front end at:
+Now head to
 
-```https://github.com/joeyharbert/tandem_front_end```
+http://localhost:3000 and get started creating a calendar!
 
-to move on!
+Make sure your plants file is .json in a format similar to the one below:
+
+```
+[
+  {
+    "name": "plant 1",
+    "water_after": "6 days"
+  },
+  {
+    "name": "plant 2",
+    "water_after": "14 days"
+  }
+]
+```
