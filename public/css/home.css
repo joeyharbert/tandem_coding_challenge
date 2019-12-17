@@ -5,12 +5,27 @@
   height: 100px;
   width: 250px;
 }
+.formCard {
+  padding: 50px;
+  padding-bottom: 100px;
+  margin-bottom: 50px;
+}
 .button {
  float: left;
+}
+.closeButton {
+  float: right;
+}
+.newCalendarButton {
+  margin-left: auto;
+  margin-right: auto;
 }
 .calendar {
   clear: both;
   margin-top: 50px;
+}
+.row {
+  margin-top: 60px;
 }
 
 /*animation*/
