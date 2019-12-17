@@ -8,6 +8,10 @@
 .button {
  float: left;
 }
+.calendar {
+  clear: both;
+  margin-top: 50px;
+}
 
 /*animation*/
 .slide-right-enter-active {
